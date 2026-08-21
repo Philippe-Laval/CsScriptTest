@@ -19,19 +19,22 @@ namespace Client.NET
         {
             PrepareCodeDomCompilers();
 
-            //Samples.LoadCode();
-            //Samples.LoadFile();
-            //Samples.CreateDelegate();
-            //Samples.LoadCodeWithInterface();
+            Samples.LoadCode();
+            Samples.LoadFile();
+            Samples.CreateDelegate();
+            Samples.LoadCodeWithInterface();
             Samples.CompileCode();
             Samples.ScriptReferencingScript();
             Samples.Referencing();
+            Samples.LoadMethod();
+            Samples.LoadMethodWithInterface();
 
             TestRoslynEvaluatorLoadMethod();
             TestEvaluatorCompileCodeAndLoadMethodWithInterface();
             TestEvaluatorLoadMethodWithInterface();
             Test_CodeDom();
             Test_Roslyn();
+
 
         }
 

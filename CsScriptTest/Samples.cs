@@ -147,6 +147,7 @@ public class Samples
         public UnloadableAssembly(string name = null) : base(name ?? Guid.NewGuid().ToString(), isCollectible: true)
             => this.Unloading += x => Console.WriteLine("Unloading " + this.Name);
     }
+    */
 
     public static void LoadMethod()
     {
@@ -164,7 +165,8 @@ public class Samples
     {
         ICalc2 script = CSScript.RoslynEvaluator
                                 .LoadMethod<ICalc2>(
-                                    @"public int Sum(int a, int b)
+                                    @"using CsScriptTest;
+                                      public int Sum(int a, int b)
                                       {
                                           return a + b;
                                       }
@@ -173,8 +175,9 @@ public class Samples
                                           return a/b;
                                       }");
         int result = script.Sum(15, 3);
+        int result2 = script.Div(15, 3);
     }
-    */
+
 
     public static void CreateDelegate()
     {
@@ -214,6 +217,9 @@ public class Samples
 
         string code = @"
                 using System;
+                // Indicates the namespace where ICalc is defined.
+                using CsScriptTest;
+
                 public class Script : ICalc
                 {
                     public int Sum(int a, int b)
@@ -222,7 +228,8 @@ public class Samples
                     }
                 }";
 
-        var script = CSScript.Evaluator.LoadCode<ICalc>(code);
+        var script = CSScript.Evaluator
+            .LoadCode<ICalc>(code);
 
         int result = script.Sum(13, 2);
     }
