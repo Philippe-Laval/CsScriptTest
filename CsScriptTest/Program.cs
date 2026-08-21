@@ -12,6 +12,9 @@ public class Program
 {
     static void Main(string[] args)
     {
+        HostRunner hostRunner = new HostRunner();
+        hostRunner.Load();
+
         Samples2.Test1();
         Samples2.Test2();
         Samples2.Test3();
