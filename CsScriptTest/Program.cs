@@ -17,6 +17,18 @@ namespace Client.NET
     {
         static void Main(string[] args)
         {
+            Samples2.Test1();
+            Samples2.Test2();
+            Samples2.Test3();
+            Samples2.Test4();
+            Samples2.Test5();
+            Samples2.Test6();
+            Samples2.Test7();
+            Samples2.Test8();
+            Samples2.Test9();
+            Samples2.Test10();
+            Samples2.Test11();
+
             PrepareCodeDomCompilers();
 
             Samples.LoadCode();
@@ -28,6 +40,7 @@ namespace Client.NET
             Samples.Referencing();
             Samples.LoadMethod();
             Samples.LoadMethodWithInterface();
+
 
             TestRoslynEvaluatorLoadMethod();
             TestEvaluatorCompileCodeAndLoadMethodWithInterface();
