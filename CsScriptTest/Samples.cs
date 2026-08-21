@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.Loader;
 using System.Xml.Linq;
+using CSScripting;
 using CSScriptLib;
 
 // Important : its indicate where the ICalc and ICalc2 interface are located
@@ -81,7 +82,7 @@ public class Samples
         }
     }
 
-    /*
+    
     public static void LoadAndUnload()
     {
         // Based on https://github.com/dotnet/samples/blob/master/core/tutorials/Unloading/Host/Program.cs
@@ -122,13 +123,14 @@ public class Samples
                 .ReferenceAssemblyOf<ICalc>()
                 .CompileAssemblyFromCode(
                     @"using System;
+                      using CsScriptTest;
                       public class Script : ICalc
                       {
                           public int Sum(int a, int b)
                           {
                               return a+b;
                           }
-                      }", asmFile);
+                      }", new CompileInfo { AssemblyFile = asmFile });
 
         var asm = new UnloadableAssembly();
 
@@ -144,10 +146,10 @@ public class Samples
 
     class UnloadableAssembly : AssemblyLoadContext
     {
-        public UnloadableAssembly(string name = null) : base(name ?? Guid.NewGuid().ToString(), isCollectible: true)
+        public UnloadableAssembly(string? name = null) : base(name ?? Guid.NewGuid().ToString(), isCollectible: true)
             => this.Unloading += x => Console.WriteLine("Unloading " + this.Name);
     }
-    */
+    
 
     public static void LoadMethod()
     {

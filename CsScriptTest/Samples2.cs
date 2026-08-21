@@ -188,6 +188,7 @@ public static class Samples2
 
         // "css_root" is the defined type
         var assembly = CSScript.RoslynEvaluator
+                                  .With(eval => eval.IsAssemblyUnloadingEnabled = true)
                                   .CompileMethod(@"int Sum(int a, int b)
                                                     {
                                                         return a+b;
@@ -196,6 +197,8 @@ public static class Samples2
         dynamic script = assembly.CreateObject("*");
 
         var result = script.Sum(7, 3);
+
+        assembly.Unload();
 
         /* In debugger with F11, we can see the generated code.
         
